@@ -1,0 +1,16 @@
+version: "3.7"
+#Based on https://github.com/akeneo/pim-community-dev/blob/master/docker-compose.yml
+
+services:
+  node:
+    image: node:lts-bullseye
+    volumes:
+      - './app:/home/node'
+    working_dir: '/home/node'
+    command: 'tail -f /dev/null'
+    init: true
+    networks:
+      - 'app'
+
+networks:
+  app:

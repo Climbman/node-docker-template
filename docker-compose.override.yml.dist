@@ -1,0 +1,13 @@
+services:
+  mysql:
+    image: 'mysql:8.0.22'
+    command: '--default-authentication-plugin=mysql_native_password'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - './docker/config/mysql/initdb.d:/docker-entrypoint-initdb.d:ro'
+    ports:
+      - '${APP_PORT_MYSQL:-33006}:3306'
+    networks:
+      - 'app'
